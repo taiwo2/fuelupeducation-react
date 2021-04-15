@@ -1,6 +1,7 @@
 import React from 'react'
 
 import NavBar from './components/NavBar/NavBar'
+import Team from './components/Team/team'
 import Footer from './components/Footer/Footer'
 
 import styles from './Landing.module.scss'
@@ -16,6 +17,7 @@ const Landing = props => {
         <div className={styles.backgroundImage2} />
       </div>
       <Footer />
+      <Team />
     </>
   )
 }

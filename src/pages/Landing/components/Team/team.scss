@@ -2,17 +2,19 @@
 .Card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 40%;
+    width: 20%;
   }
   
-.card:hover {
+.card {
+
+&:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
-  
+
+}
 .Container {
     padding: 2px 16px;
-    margin-left: 20rem;
-
+    margin-left: 20%;
   }
 
   .fa {
@@ -25,35 +27,53 @@
     border-radius: 50%;
   }
   
-  .fa:hover {
-      opacity: 0.7;
+  .fa{
+
+  &:hover {
+    opacity: 0.7;
   }
-  
+}
   .fa-facebook {
-    background: #3B5998;
-    color: white;
+    // background:;
+    color: #2218dd;
   }
   
   .fa-twitter {
-   background: #55ACEE;
-    color: white;
+  //  background: ;
+    // color: white;
+    // // background-color: black;
+    // li {
+    //   // fill: #55ACEE;
+    // }
+    a {
+      fill: #55ACEE;
+    }
   }
   
   .fa-google {
     background: #dd4b39;
-    color: white;
+    // color: white;
   }
   
   .fa-linkedin {
     background: #007bb5;
     color: white;
   }
+
 .social {
+  margin-left: 5rem;
   li{
     display: inline;
+    margin-left: 15px;
   }
   .a{
     display: flex;
 
   }
+}
+.img{
+  width:50%;
+  border-radius: 50%;
+  margin-left: 25%;
+
 }

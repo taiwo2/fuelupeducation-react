@@ -1,0 +1,12 @@
+
+@import '../../../../assets/styles/sass/variables';
+
+.Head{
+    &Items{
+     display: flex;
+     justify-content: space-around;
+     font-size: large;
+     color: gray;
+     list-style: none;
+    }
+   }

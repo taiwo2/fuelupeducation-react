@@ -1,21 +1,69 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
+import { useTable } from 'react-table'
+import MOCK_DATA from './MOCK_DATA.json'
 
-import styles from './Hero.module.scss'
+import './Hero.module.scss'
 
-const Hero = ({ className, mainHeading, secondaryHeading }) => {
+function Hero() {
+  const COLUMNS = [
+    {
+      Header: 'Title',
+      accessor: 'Title',
+    },
+    {
+      Header: 'Data',
+      accessor: 'Data',
+    },
+    {
+      Header: 'Score',
+      accessor: 'Score',
+    },
+    {
+      Header: 'Status',
+      accessor: 'Status',
+    },
+  ]
+
+  const columns = useMemo(() => COLUMNS, [])
+  const data = useMemo(() => MOCK_DATA, [])
+
+  const tableInstance = useTable({
+    columns: COLUMNS,
+    data: MOCK_DATA,
+  })
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = tableInstance
   return (
-    <div className={styles[className]}>
-      <div className={styles.HeroMainHeading}>{mainHeading}</div>
-      <div className={styles.HeroSecondaryHeading}>{secondaryHeading}</div>
-    </div>
+    <table {...getTableProps()}>
+      <thead>
+        {headerGroups.map(headerGroup => (
+          <tr {...headerGroup.getHeaderGroupprops()}>
+            {headerGroup.headers.map(column => (
+              <th {...columns.getHeaderProps()}>{column.render('Header')}</th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows.map(row => {
+          prepareRow(row)
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map(cell => {
+                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+              })}
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
   )
-}
-
-Hero.propTypes = {
-  className: PropTypes.string.isRequired,
-  mainHeading: PropTypes.string.isRequired,
-  secondaryHeading: PropTypes.string.isRequired,
 }
 
 export default Hero
